@@ -27,19 +27,19 @@ from transformers.modeling_outputs import CausalLMOutputWithPast
 from minigpt4.models.llava_arch import LlavaMetaModel, LlavaMetaForCausalLM
 
 
-class LlavaConfig(LlamaConfig):
-    model_type = "llava"
+class CustomLlavaConfig(LlamaConfig):
+    model_type = "llava_custom"
 
 
 class LlavaLlamaModel(LlavaMetaModel, LlamaModel):
-    config_class = LlavaConfig
+    config_class = CustomLlavaConfig
 
     def __init__(self, config: LlamaConfig):
         super(LlavaLlamaModel, self).__init__(config)
 
 
 class LlavaLlamaForCausalLM(LlamaForCausalLM, LlavaMetaForCausalLM):
-    config_class = LlavaConfig
+    config_class = CustomLlavaConfig
 
     def __init__(self, config):
         super(LlamaForCausalLM, self).__init__(config)
@@ -136,5 +136,5 @@ class LlavaLlamaForCausalLM(LlamaForCausalLM, LlavaMetaForCausalLM):
         )
         return model_inputs
 
-AutoConfig.register("llava", LlavaConfig)
-AutoModelForCausalLM.register(LlavaConfig, LlavaLlamaForCausalLM)
+AutoConfig.register("llava_custom", CustomLlavaConfig)
+AutoModelForCausalLM.register(CustomLlavaConfig, LlavaLlamaForCausalLM)
