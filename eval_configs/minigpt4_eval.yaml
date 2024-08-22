@@ -5,7 +5,7 @@ model:
   end_sym: "###"
   low_resource: False
   prompt_template: '###Human: {} ###Assistant: '
-  ckpt: '/mnt/petrelfs/share_data/huangqidong/lvlm/minigpt4/prerained_minigpt4_7b.pth'
+  ckpt: 'Vision-CAIR/MiniGPT-4'
 
 
 datasets:
